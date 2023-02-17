@@ -17,7 +17,6 @@ public class Ticket {
 		this.datAusgang = null;
 		this.bezahlt = false;
 	}
-	
 
 	public boolean getBezahlt() {
 		return bezahlt;
