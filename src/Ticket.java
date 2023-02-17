@@ -18,6 +18,16 @@ public class Ticket {
 		this.bezahlt = false;
 	}
 
+
+
+
+
+
+
+
+
+	
+
 	public boolean getBezahlt() {
 		return bezahlt;
 	}
