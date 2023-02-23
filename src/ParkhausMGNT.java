@@ -1,14 +1,18 @@
 
 public class ParkhausMGNT {
 
-	private Ticket ticket1;
-	private Ticket ticket2;
-	private Ticket ticket3;
 	
+	Ticket[] ticketliste = new Ticket [250];
+	int i = 0; {
+	while (i<ticketliste.length) {
+		ticketliste[i] = new Ticket();
+		i++; }
+	}
 
 	private double zuzahlen1;
 	int zuzahlen = (int) (zuzahlen1 * 100);
 
+	int a = -1;
 	int mal100 = 0;
 	int mal50 = 0;
 	int mal20 = 0;
@@ -24,33 +28,13 @@ public class ParkhausMGNT {
 	int mal001 = 0;
 
 	public ParkhausMGNT() {
-		this.ticket1 = null;
-		this.ticket2 = null;
-		this.ticket3 = null;
+		ticketliste[i] = null;
 	}
 
-	public Ticket getTicket1() {
-		return ticket1;
+	public Ticket getTicket(int a) {
+		if (i == a) {
+		return ticketliste[i];
 	}
-
-	public void setTicket1(Ticket ticket1) {
-		this.ticket1 = ticket1;
-	}
-
-	public Ticket getTicket2() {
-		return ticket2;
-	}
-
-	public void setTicket2(Ticket ticket2) {
-		this.ticket2 = ticket2;
-	}
-
-	public Ticket getTicket3() {
-		return ticket3;
-	}
-
-	public void setTicket3(Ticket ticket3) {
-		this.ticket3 = ticket3;
 	}
 	public double getZuzahlen1() {
 		return zuzahlen1;
@@ -62,64 +46,35 @@ public class ParkhausMGNT {
 
 
 	public String getRuckgeld() {
+		
 		int zuzahlen = (int) (zuzahlen1 * 100);
+		int[] arr1 = {10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+		int[] arr2 = {mal100, mal50, mal20, mal10, mal05, mal02, mal01, mal050, mal020, mal010, mal005, mal002, mal001};
+ 		
+		int i = 0;
+		while (i<arr1.length) {
+			
 		
-		mal100 = zuzahlen / 10000;
-		zuzahlen = zuzahlen % 10000;
-		
-		mal50 = zuzahlen / 5000;
-		zuzahlen = zuzahlen % 5000;
-
-		mal20 = zuzahlen / 2000;
-		zuzahlen = zuzahlen % 2000;
-
-		mal10 = zuzahlen / 1000;
-		zuzahlen = zuzahlen % 1000;
-
-		mal05 = zuzahlen / 500;
-		zuzahlen = zuzahlen % 500;
-
-		mal02 = zuzahlen / 200;
-		zuzahlen = zuzahlen % 200;
-
-		mal01 = zuzahlen / 100;
-		zuzahlen = zuzahlen % 100;
-
-		mal050 = zuzahlen / 50;
-		zuzahlen = zuzahlen % 50;
-
-		mal020 = zuzahlen / 20;
-		zuzahlen = zuzahlen % 20;
-
-		mal010 = zuzahlen / 10;
-		zuzahlen = zuzahlen % 10;
-
-		mal005 = zuzahlen / 5;
-		zuzahlen = zuzahlen % 5;
-
-		mal002 = zuzahlen / 2;
-		zuzahlen = zuzahlen % 2;
-
-		mal001 = zuzahlen / 1;
-		zuzahlen = zuzahlen % 1;
-		
-		
-		return "100 Euro schein: " + mal100 + " mal" 
-		         + "\n50 Euro schein: " + mal50 + " mal" 
-				 + "\n20 Euro schein: " + mal20 + " mal"
-		         + "\n10 Euro schein: " + mal10 + " mal" 
-			     + "\n5 Euro schein: " + mal05 + " mal"
-			     + "\n2 Euro stueck: " + mal02 + " mal" 
-		         + "\n1 Euro stueck: " + mal01 + " mal"
-			     + "\n0,50 Euro stueck: " + mal050 + " mal"
-		         + "\n0,20 Euro stueck: " + mal020 + " mal"
-			     + "\n0,10 Euro stueck: " + mal010 + " mal"
-		         + "\n0,05 Euro stueck: " + mal005 + " mal"
-			     + "\n0,02 Euro stueck: " + mal002 + " mal"
-		         + "\n0,01 Euro stueck: " + mal001 + " mal";
-	}
+		arr2[i] = zuzahlen / arr1[i];
+		zuzahlen = zuzahlen % arr1[i];
+		i++;
+		}		
+		return "100 Euro schein: " + arr2[0] + " mal" 
+		         + "\n50 Euro schein: " + arr2[1] + " mal" 
+				 + "\n20 Euro schein: " + arr2[2] + " mal"
+		         + "\n10 Euro schein: " + arr2[2] + " mal" 
+			     + "\n5 Euro schein: " + arr2[3] + " mal"
+			     + "\n2 Euro stueck: " + arr2[4] + " mal" 
+		         + "\n1 Euro stueck: " + arr2[5] + " mal"
+			     + "\n0,50 Euro stueck: " + arr2[6] + " mal"
+		         + "\n0,20 Euro stueck: " + arr2[7] + " mal"
+			     + "\n0,10 Euro stueck: " + arr2[8] + " mal"
+		         + "\n0,05 Euro stueck: " + arr2[9] + " mal"
+			     + "\n0,02 Euro stueck: " + arr2[10] + " mal"
+		         + "\n0,01 Euro stueck: " + arr2[11] + " mal";
+	
 
 	// 3 Tickestslots erstellen
 	// verwaltung
-
+}
 }

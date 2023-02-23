@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Eingang {
+public class ParkhausSimulator {
 	public static void main(String[] args) {
 		try (Scanner scan = new Scanner(System.in)) {
 			// Attribute etc.

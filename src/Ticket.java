@@ -12,7 +12,7 @@ public class Ticket {
 		nummer = nummer + 1;
 
 		this.ticketnummer = nummer;
-		this.datEingang = DateHelper.getCurrentTimeAsString();
+		this.datEingang = null;
 		this.datKasse = null;
 		this.datAusgang = null;
 		this.bezahlt = false;
