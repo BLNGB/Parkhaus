@@ -33,40 +33,31 @@ public class ParkhausSimulatorMitArray {
 //Neuses ticket
 					while (eingabeEingang == 1) {
 //überprüfe ob ticket an stelle "i" frei ist
-						for (i = 0;p1.ticketliste[i] != null;i++) {
-							if (p1.ticketliste[i] == null) {
-//erstelle neues ticket
-								p1.ticketliste[i] = new Ticket();
-//bestätigung ausgeben
-								System.out.println("Bitte Ticket entnehmen und durch die Schranke fahren! \n\n");
-// i + 1
-							} else if (i >= p1.ticketliste.length) {
-								//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-								i = 0;
-								break;
-								}
-//Wenn ticketslot "i" belegt ist
-						}
-							while (p1.ticketliste[i] != null) {
+						i = 0;
+						while (i + 1 <= p1.ticketliste.length) {
+							if (p1.ticketliste[i] != null) {
 								i++;
-								if (i >= p1.ticketliste.length) {
-									i = 0;
-									break;
-								}
-//ausgabe das voll ist
-								System.out.println("Parkhaus ist voll \n\n");
+							} else if (p1.ticketliste[i] == null) {
+								p1.ticketliste[i] = new Ticket();
+								System.out.println("Bitte Ticket entnehmen und durch die Schranke fahren! \n\n");
+								eingabeEingang = 0;
+								break;
 							}
-
-							eingabeEingang = 0;
+							if (i == p1.ticketliste.length) {
+								System.out.println("Parkhaus ist voll \n\n");
+								eingabeEingang = 0;
+								break;
+							}
 						}
-						if (eingabeEingang == 2) {
-							eingabeMenu = 0;
-							eingabeEingang = 0;
-						}
+					}
+					if (eingabeEingang == 2) {
+						eingabeMenu = 0;
+						eingabeEingang = 0;
 					}
 
 				}
 			}
-		}}
 
+		}
+	}
 }
