@@ -1,7 +1,7 @@
 
 public class ParkhausMGNT {
 
-	Ticket[] ticketliste = new Ticket[20];
+	Ticket[] ticketliste = new Ticket[3];
 	int i = 0;
 
 	private double zuzahlen1;
@@ -53,11 +53,11 @@ public class ParkhausMGNT {
 			i++;
 		}
 		return "100 Euro schein: " + arr2[0] + " mal" + "\n50 Euro schein: " + arr2[1] + " mal" + "\n20 Euro schein: "
-				+ arr2[2] + " mal" + "\n10 Euro schein: " + arr2[2] + " mal" + "\n5 Euro schein: " + arr2[3] + " mal"
-				+ "\n2 Euro stueck: " + arr2[4] + " mal" + "\n1 Euro stueck: " + arr2[5] + " mal"
-				+ "\n0,50 Euro stueck: " + arr2[6] + " mal" + "\n0,20 Euro stueck: " + arr2[7] + " mal"
-				+ "\n0,10 Euro stueck: " + arr2[8] + " mal" + "\n0,05 Euro stueck: " + arr2[9] + " mal"
-				+ "\n0,02 Euro stueck: " + arr2[10] + " mal" + "\n0,01 Euro stueck: " + arr2[11] + " mal";
+				+ arr2[2] + " mal" + "\n10 Euro schein: " + arr2[3] + " mal" + "\n5 Euro schein: " + arr2[4] + " mal"
+				+ "\n2 Euro stueck: " + arr2[5] + " mal" + "\n1 Euro stueck: " + arr2[6] + " mal"
+				+ "\n0,50 Euro stueck: " + arr2[7] + " mal" + "\n0,20 Euro stueck: " + arr2[8] + " mal"
+				+ "\n0,10 Euro stueck: " + arr2[9] + " mal" + "\n0,05 Euro stueck: " + arr2[10] + " mal"
+				+ "\n0,02 Euro stueck: " + arr2[11] + " mal" + "\n0,01 Euro stueck: " + arr2[12] + " mal\n\n";
 
 		// 3 Tickestslots erstellen
 		// verwaltung
