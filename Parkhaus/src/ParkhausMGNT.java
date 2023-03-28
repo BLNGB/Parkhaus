@@ -5,7 +5,7 @@ public class ParkhausMGNT {
 	int i = 0;
 
 	private double zuzahlen1;
-	int zuzahlen = (int) (zuzahlen1 * 100);
+//	int zuzahlen = (int) (zuzahlen1 * 100);
 
 	int a = -1;
 	int mal100 = 0;
@@ -26,10 +26,10 @@ public class ParkhausMGNT {
 		ticketliste[i] = null;
 	}
 
-	public Ticket getTicket(int a) {
-		if (i == a) ;
-			return ticketliste[i];
-	}
+//	public Ticket getTicket(int a) {
+//		if (i == a) ;   // if (a < ticketliste.length)
+//			return ticketliste[i];
+//	}
 	public double getZuzahlen1() {
 		return zuzahlen1;
 	}
