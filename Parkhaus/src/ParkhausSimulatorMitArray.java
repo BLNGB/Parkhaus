@@ -54,68 +54,124 @@ public class ParkhausSimulatorMitArray {
 					if (eingabeEingang == 2) {
 						eingabeMenu = 0;
 						eingabeEingang = 0;
+					} else {
+						System.out.println("Eingabe nicht erkannt");
 					}
 
 				}
 				// Eingang ende
-				
-				//!!!Ticketliste[i].eingabe nicht Ticketliste[eingabe]
-				//!!!
-				//!!!
-				
+
+				// !!!Ticketliste[i].eingabe nicht Ticketliste[eingabe]
+				// !!!
+				// !!!
+
 				// Kasse
 				while (eingabeMenu == 2) {
 					System.out.println("Willkommen");
 					System.out.println("Ticket zahlen: 1");
 					System.out.println("Zurück zum Hauptmenue: 2");
+					eingabeKasse = scan.nextInt();
 					if (eingabeKasse == 1) {
 						System.out.println("Was ist ihre Ticketnummer ?");
-						i = scan.nextInt();
+						int ticketNr = scan.nextInt();
 
-						if (p1.ticketliste[i].getBezahlt() == false) {
-							p1.ticketliste[i].setDatKasse(DateHelper.getCurrentTimeAsString());
-							parkgebuehr = 2;
-							if (DateHelper.calculateTimeDifferenceInMinutes(p1.ticketliste[i].getDatEingang(),
-									p1.ticketliste[i].getDatKasse()) >= 60) {
-								parkgebuehr = parkgebuehr + Math.round(
-										(DateHelper.calculateTimeDifferenceInMinutes(p1.ticketliste[i].getDatEingang(),
-												p1.ticketliste[i].getDatKasse()) / 30) * 0.50);
-							}
-							System.out.println("Ihre Parkgebuehr betraegt :" + parkgebuehr);
-							System.out.println("Wollen sie jetzt bezahlen?:(Y/N)");
-							String eingabeWillZahlen = scan.next();
-							if (eingabeWillZahlen == "Y") {
-								System.out
-										.println("(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
-								gezahlt = scan.nextFloat();
-								while (gezahlt < parkgebuehr) {
-									System.out.println("Noch zu zahlen: " + (parkgebuehr - gezahlt));
-									System.out.println(
-											"(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
-									gezahlt = gezahlt + scan.nextFloat();
-									p1.setZuzahlen1(gezahlt - parkgebuehr);
-									System.out.println("sie bekommen zurück :" + p1.getZuzahlen1());
-									System.out.println(p1.getRuckgeld());
+						for (int j = 0; j < p1.ticketliste.length; j++) {
+							if (p1.ticketliste[j].getTicketnummer() != ticketNr) {
+								j++;
+								if (j == p1.ticketliste.length - 1) {
+									break;
 								}
-								if (gezahlt - parkgebuehr >= 0 && p1.ticketliste[i].getBezahlt() == false) {
-									p1.ticketliste[i].setBezahlt(true);
-									System.out.println(
-											"Ihr Ticket ist bezahlt.\nBitte fahren sie inerhalb 10 minuten aus dem Parkhaus!\n\n");
+							} else if (p1.ticketliste[j].getTicketnummer() == ticketNr) {
+								i = j;
+
+								if (p1.ticketliste[i].getBezahlt() == false) {
+									p1.ticketliste[i].setDatKasse(DateHelper.getCurrentTimeAsString());
+									parkgebuehr = 2;
+									if (DateHelper.calculateTimeDifferenceInMinutes(p1.ticketliste[i].getDatEingang(),
+											p1.ticketliste[i].getDatKasse()) >= 60) {
+										parkgebuehr = parkgebuehr
+												+ Math.round((DateHelper.calculateTimeDifferenceInMinutes(
+														p1.ticketliste[i].getDatEingang(),
+														p1.ticketliste[i].getDatKasse()) / 30) * 0.50);
+									}
+									System.out.println("Ihre Parkgebuehr betraegt :" + parkgebuehr);
+									System.out.println("Wollen sie jetzt bezahlen?:(Y/N)");
+									char eingabeWillZahlen = scan.next().charAt(0);
+									
+									if (eingabeWillZahlen == 'Y') {
+										System.out.println("Bitte stecken sie Geld in den Automaten!");
+										System.out.println("(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
+										gezahlt = scan.nextFloat();
+										while (gezahlt < parkgebuehr) {
+											System.out.println("Noch zu zahlen: " + (parkgebuehr - gezahlt));
+											System.out.println(
+													"(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
+											gezahlt = gezahlt + scan.nextFloat();
+											p1.setZuzahlen1(gezahlt - parkgebuehr);
+											System.out.println("sie bekommen zurück :" + p1.getZuzahlen1());
+											System.out.println(p1.getRuckgeld());
+										}
+										if (gezahlt - parkgebuehr >= 0 && p1.ticketliste[i].getBezahlt() == false) {
+											p1.ticketliste[i].setBezahlt(true);
+											System.out.println(
+													"Ihr Ticket ist bezahlt.\nBitte fahren sie inerhalb 10 minuten aus dem Parkhaus!\n\n");
+										}
+									} else {
+										eingabeEingang = 0;
+										eingabeKasse = 0;
+									}
+
+								} else {
+									System.out.println("Ihr gewaehltes Ticket ist bereits bezahlt \n\n");
 								}
-							} else {
-								eingabeEingang = 0;
-								eingabeKasse = 0;
 							}
-
-						} else {
-							System.out.println("Ihr gewaehltes Ticket ist bereits bezahlt \n\n");
 						}
-						if (eingabeKasse == 300) {
-							eingabeEingang = 0;
-							eingabeMenu = 0;
-							eingabeKasse = 0;
+						
+//						if (p1.ticketliste[i].getBezahlt() == false) {
+//							p1.ticketliste[i].setDatKasse(DateHelper.getCurrentTimeAsString());
+//							parkgebuehr = 2;
+//							if (DateHelper.calculateTimeDifferenceInMinutes(p1.ticketliste[i].getDatEingang(),
+//									p1.ticketliste[i].getDatKasse()) >= 60) {
+//								parkgebuehr = parkgebuehr + Math.round(
+//										(DateHelper.calculateTimeDifferenceInMinutes(p1.ticketliste[i].getDatEingang(),
+//												p1.ticketliste[i].getDatKasse()) / 30) * 0.50);
+//							}
+//							System.out.println("Ihre Parkgebuehr betraegt :" + parkgebuehr);
+//							System.out.println("Wollen sie jetzt bezahlen?:(Y/N)");
+//							String eingabeWillZahlen = scan.next();
+//							if (eingabeWillZahlen == "Y") {
+//								System.out
+//										.println("(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
+//								gezahlt = scan.nextFloat();
+//								while (gezahlt < parkgebuehr) {
+//									System.out.println("Noch zu zahlen: " + (parkgebuehr - gezahlt));
+//									System.out.println(
+//											"(nur in der simulation) Wieviel Euro stecken sie in den Automaten?");
+//									gezahlt = gezahlt + scan.nextFloat();
+//									p1.setZuzahlen1(gezahlt - parkgebuehr);
+//									System.out.println("sie bekommen zurück :" + p1.getZuzahlen1());
+//									System.out.println(p1.getRuckgeld());
+//								}
+//								if (gezahlt - parkgebuehr >= 0 && p1.ticketliste[i].getBezahlt() == false) {
+//									p1.ticketliste[i].setBezahlt(true);
+//									System.out.println(
+//											"Ihr Ticket ist bezahlt.\nBitte fahren sie inerhalb 10 minuten aus dem Parkhaus!\n\n");
+//								}
+//							} else {
+//								eingabeEingang = 0;
+//								eingabeKasse = 0;
+//							}
+//
+//						} else {
+//							System.out.println("Ihr gewaehltes Ticket ist bereits bezahlt \n\n");
+//						}
+						
+					}
+					if (eingabeKasse == 2) {
+						eingabeEingang = 0;
+						eingabeMenu = 0;
+						eingabeKasse = 0;
 
-						}
 					}
 				}
 			}
