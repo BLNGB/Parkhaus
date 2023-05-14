@@ -1,3 +1,5 @@
+package Parkhaus;
+
 public class Parkhaus {
     // atribute
     private int anzahlStellplaetze;
@@ -32,6 +34,10 @@ public class Parkhaus {
         this.anzahlBelegteStellplaetze = anzahlBelegteStellplaetze;
     }
 
+    public void setTicketliste(Ticket[] ticketliste) {
+        this.ticketliste = ticketliste;
+    }
+
     // methoden
     public String einfahren() {
         int i = 0;
@@ -41,12 +47,14 @@ public class Parkhaus {
                 i++;
             } else if (this.ticketliste[i] == null) {
                 this.ticketliste[i] = new Ticket();
-                this.ticketliste[i].setDateEinfahrt(DateHelper.getActualTimeAsString());
+                this.ticketliste[i].setDateEingang(DateHelper.getActualTimeAsString());
                 meldung = "Ihr Ticket hat die Nummer " + this.ticketliste[i].getTicketID()
                         + "\n Bitte Ticket entnehmen und durch die Schranke fahren! \n\n";
+                break;
             }
             if (i == this.ticketliste.length) {
                 meldung = "Parkhaus ist voll \n\n";
+                break;
             }
         }
         return meldung;
@@ -55,13 +63,14 @@ public class Parkhaus {
     public String ausfahrt(int ticketId) {
         String meldung = "Ticket nicht erkannt bitte melden sie sich beim Parkhauspersonal";
         Ticket t = this.getTicket(ticketId);
-        if (t.getTicketID() == ticketId) {
-            if (t.getIstBezahlt() == false) {
-                meldung = "Ticket ist noch nicht bezahlt! Bitte bezahlen sie das ticket an einem beliebigen Kassenautomaten.";
-            } else {
-                meldung = "Bitte fahren sie nun durch die schranke!";
-                t = null;
-            }
+
+        if (t.getIstBezahlt() == false) {
+            meldung = "Ticket ist noch nicht bezahlt! Bitte bezahlen sie das ticket an einem beliebigen Kassenautomaten.";
+        } else {
+            this.ticketliste = null;
+
+            meldung = "Bitte fahren sie nun durch die schranke!";
+
         }
 
         return meldung;
@@ -74,4 +83,5 @@ public class Parkhaus {
         }
         return null;
     }
+
 }
