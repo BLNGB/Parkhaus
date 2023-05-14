@@ -1,0 +1,7 @@
+Bezahlen ohne Ticket zu erstellen führt zu error.
+Bezahlen wenn TicketID zu groß error.
+
+Ausfahrt ohne Ticket zu erstellen führt zu error.
+Ausfahrt Wenn TicketID zu groß oder Ticket bereits rausgefahren fürhrt zu error.
+
+Ticket auf Null setzen (Wie fine ich ein bestimmtes objekt im array)
